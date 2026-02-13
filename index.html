@@ -11,6 +11,203 @@
     <title>Healthy Meal Finder</title>
   </head>
   <body>
+    <section
+      class="min-h-screen bg-linear-to-br from-green-50 via-white to-orange-50"
+    >
+      <div class="max-w-max mx-auto px-3 py-12">
+        <div class="flex flex-col items-center">
+          <h1 class="text-3xl font-bold text-gray-800">
+            Healthy Meal Finder 🍎
+          </h1>
+          <p class="text-gray-600 mt-2">
+            Discover healthy and delicious meal ideas for your daily nutrition
+            needs.
+          </p>
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="🔎 Search for meals such as 'chicken', 'vegan', or 'fish'..."
+            class="border border-gray-200 min-w-md mt-6 p-2 rounded-full shadow-lg focus:outline-none focus:border-2 focus:border-green-500"
+          />
+          <div class="flex items-center justify-center space-x-3 mt-3">
+            <button
+              id="btn-chicken"
+              class="border border-gray-200 px-2 py-1 text-xs rounded-full hover:text-green-600 hover:border-green-500"
+            >
+              chicken
+            </button>
+            <button
+              id="btn-vegan"
+              class="border border-gray-200 px-2 py-1 text-xs rounded-full hover:text-green-600 hover:border-green-500"
+            >
+              vegan
+            </button>
+            <button
+              id="btn-fish"
+              class="border border-gray-200 px-2 py-1 text-xs rounded-full hover:text-green-600 hover:border-green-500"
+            >
+              fish
+            </button>
+            <button
+              id="btn-pasta"
+              class="border border-gray-200 px-2 py-1 text-xs rounded-full hover:text-green-600 hover:border-green-500"
+            >
+              Pasta
+            </button>
+            <button
+              id="btn-salad"
+              class="border border-gray-200 px-2 py-1 text-xs rounded-full hover:text-green-600 hover:border-green-500"
+            >
+              salad
+            </button>
+          </div>
+        </div>
+
+        <!-- Results container -->
+        <h2 class="flex justify-center items-center mt-6 font-semibold hidden" id="resultsHeading">
+          Results (<span id="resultNum" class="px-1"></span> Meals)
+        </h2>
+        <div id="resultContainer" class="mt-10 grid grid-cols-4 gap-6">
+          <!-- box container -->
+          <div class="bg-white shadow-md rounded-lg min-w-3xs">
+            <img
+              src="./img/img1.jpg"
+              alt="Meal Image"
+              class="w-full h-40 object-cover rounded-md"
+            />
+            <div class="p-2 flex flex-col">
+              <h3 class="text-sm font-bold mt-2 p-1">Grilled Chicken Salad</h3>
+              <div class="p-1 gap-2 flex items-center text-xs text-gray-500">
+                <i
+                  class="fa-solid fa-location-dot"
+                  style="color: #f97316ff"
+                ></i>
+                <span>British</span>
+                <i class="fa-solid fa-tag" style="color: #22c55eff"></i>
+                <span>Salad</span>
+              </div>
+              <button
+                class="mt-2 p-1.5 bg-linear-to-r from-green-500 to-green-600 text-white text-sm rounded-lg hover:bg-linear-to-r hover:from-green-600 hover:to-green-700"
+              >
+                Read Details
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Read details model -->
+        <div
+          id="recipe-modal"
+          class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50 p-4"
+        >
+          <div
+            class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl"
+          >
+            <button
+              id="close-modal"
+              class="absolute top-4 left-4 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md hover:bg-gray-100 z-10"
+            >
+              <i class="fa-solid fa-xmark text-gray-600"></i>
+            </button>
+
+            <div class="relative h-64">
+              <img
+                src="./img/img1.jpg"
+                class="w-full h-full object-cover"
+                alt="Chicken Handi"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-6"
+              >
+                <h2 class="text-white text-2xl font-bold">Chicken Handi</h2>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex gap-2 mb-4">
+                <span
+                  class="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-xs"
+                  ><i
+                    class="fa-solid fa-location-dot px-1"
+                    style="color: #f97316ff"
+                  ></i>
+                  Indian</span
+                >
+                <span
+                  class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-xs"
+                  ><i class="fa-solid fa-tag px-1" style="color: #22c55eff"></i
+                  >Chicken</span
+                >
+              </div>
+
+              <h3 class="font-bold mb-4 flex items-center gap-2">
+                <span class="text-xl">📊</span> Ingredients
+              </h3>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div
+                  class="bg-gray-50 p-3 rounded-lg flex justify-between items-center"
+                >
+                  <span class="text-gray-700 text-sm">Chicken</span>
+                  <span class="text-green-600 font-semibold text-sm"
+                    >1.2 kg</span
+                  >
+                </div>
+                <div
+                  class="bg-gray-50 p-3 rounded-lg flex justify-between items-center"
+                >
+                  <span class="text-gray-700 text-sm">Onion</span>
+                  <span class="text-green-600 font-semibold text-sm"
+                    >5 thinly sliced</span
+                  >
+                </div>
+              </div>
+              <h3 class="font-bold mb-4 mt-4 flex items-center gap-2">
+                <span class="text-xl">🧑‍🍳</span> Preparation method
+              </h3>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <p class="text-gray-700 text-sm">
+                  Take a large pot or wok, big enough to cook all the chicken,
+                  and heat the oil in it. Once the oil is hot, add sliced onion
+                  and fry them until deep golden brown. Then take them out on a
+                  plate and set aside. To the same pot, add the chopped garlic
+                  and sauté for a minute. Then add the chopped tomatoes and cook
+                  until tomatoes turn soft. This would take about 5 minutes.
+                  Then return the fried onion to the pot and stir. Add ginger
+                  paste and sauté well. Now add the cumin seeds, half of the
+                  coriander seeds and chopped green chillies. Give them a quick
+                  stir. Next goes in the spices – turmeric powder and red chilli
+                  powder. Sauté the spices well for couple of minutes. Add the
+                  chicken pieces to the wok, season it with salt to taste and
+                  cook the chicken covered on medium-low heat until the chicken
+                  is almost cooked through. This would take about 15 minutes.
+                  Slowly sautéing the chicken will enhance the flavor, so do not
+                  expedite this step by putting it on high heat. When the oil
+                  separates from the spices, add the beaten yogurt keeping the
+                  heat on lowest so that the yogurt doesn’t split. Sprinkle the
+                  remaining coriander seeds and add half of the dried fenugreek
+                  leaves. Mix well. Finally add the cream and give a final mix
+                  to combine everything well. Sprinkle the remaining kasuri
+                  methi and garam masala and serve the chicken handi hot with
+                  naan or rotis. Enjoy!
+                </p>
+              </div>
+              <div class="flex justify-center items-center">
+                <button
+                  class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full mt-4"
+                >
+                  Watch the video on YouTube
+                  <i
+                    class="fa-solid fa-arrow-up-right-from-square px-1"
+                    style="color: white"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <script src="./script.js"></script>
   </body>
 </html>
